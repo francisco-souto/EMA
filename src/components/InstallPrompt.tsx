@@ -47,9 +47,9 @@ export default function InstallPrompt() {
   if (dismissed || (!deferredPrompt && !showIosHint)) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t border-gray-200 shadow-xl">
-      <div className="flex items-center gap-3 max-w-lg mx-auto">
-        <img src={`${import.meta.env.BASE_URL}icons/icon.svg`} alt="" className="w-10 h-10 rounded-lg shrink-0" />
+    <div className="bottom-bar z-50">
+      <div className="flex items-center gap-3 max-w-lg mx-auto px-4 py-3">
+        <img src={`${import.meta.env.BASE_URL}icons/icon.svg`} alt="" className="w-10 h-10 rounded-xl shrink-0 shadow-sm" />
         <div className="flex-1 min-w-0">
           <p className="text-sm font-semibold text-gray-900">Instalar ONASP</p>
           {showIosHint ? (
@@ -66,17 +66,16 @@ export default function InstallPrompt() {
           {deferredPrompt && (
             <button
               onClick={() => void handleInstall()}
-              className="px-3 py-1.5 text-sm font-semibold text-white rounded-lg"
-              style={{ backgroundColor: '#1a3c6e' }}
+              className="btn-primary px-3.5 py-1.5 text-sm rounded-lg"
             >
               Instalar
             </button>
           )}
           <button
             onClick={handleDismiss}
-            className="px-3 py-1.5 text-sm text-gray-400 border border-gray-200 rounded-lg"
+            className="btn-secondary px-3 py-1.5 text-sm rounded-lg text-gray-400"
           >
-            ✕
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
       </div>

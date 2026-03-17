@@ -12,22 +12,19 @@ export default function Layout({ title, children, showBack = false, rightAction 
   const navigate = useNavigate()
 
   return (
-    <div className="flex flex-col" style={{ minHeight: '100dvh', backgroundColor: '#f1f5f9' }}>
-      <header
-        className="sticky top-0 z-20 shadow-md"
-        style={{ backgroundColor: '#1a3c6e' }}
-      >
-        <div className="flex items-center gap-2 px-3" style={{ height: 56 }}>
+    <div className="flex flex-col" style={{ minHeight: '100dvh', backgroundColor: '#f0f2f5' }}>
+      <header className="sticky top-0 z-20 gradient-header shadow-lg">
+        <div className="flex items-center gap-3 px-4" style={{ height: 60 }}>
           {showBack && (
             <button
               onClick={() => navigate(-1)}
-              className="shrink-0 flex items-center justify-center w-10 h-10 -ml-1 rounded-full text-white"
+              className="shrink-0 flex items-center justify-center w-9 h-9 -ml-1 rounded-lg text-white/80 active:text-white active:bg-white/10 transition-colors"
               aria-label="Voltar"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
+                width="20"
+                height="20"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -38,19 +35,23 @@ export default function Layout({ title, children, showBack = false, rightAction 
             </button>
           )}
           {!showBack && (
-            <img
-              src={`${import.meta.env.BASE_URL}icons/icon.svg`}
-              alt=""
-              className="w-8 h-8 rounded-md shrink-0"
-              aria-hidden="true"
-            />
+            <div className="shrink-0 w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center">
+              <img
+                src={`${import.meta.env.BASE_URL}icons/icon.svg`}
+                alt=""
+                className="w-6 h-6"
+                aria-hidden="true"
+              />
+            </div>
           )}
-          <h1 className="flex-1 text-base font-semibold text-white truncate">{title}</h1>
-          {rightAction && <div className="shrink-0 text-white">{rightAction}</div>}
+          <div className="flex-1 min-w-0">
+            <h1 className="text-[0.9375rem] font-semibold text-white truncate tracking-tight">{title}</h1>
+          </div>
+          {rightAction && <div className="shrink-0 text-white/80">{rightAction}</div>}
         </div>
       </header>
 
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 fade-in">{children}</main>
     </div>
   )
 }

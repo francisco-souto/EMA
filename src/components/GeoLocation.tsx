@@ -24,7 +24,7 @@ export default function GeoLocationCapture({ value, onCapture }: GeoLocationCapt
         type="button"
         onClick={() => void handleCapture()}
         disabled={loading}
-        className="w-full py-2.5 border-2 border-dashed border-gray-300 rounded-xl text-sm font-medium text-gray-500 flex items-center justify-center gap-2 disabled:opacity-60 active:bg-gray-50"
+        className="w-full py-2.5 border-2 border-dashed border-gray-300 rounded-xl text-sm font-medium text-gray-500 flex items-center justify-center gap-2 disabled:opacity-60 active:bg-gray-50 transition-colors"
       >
         {loading ? (
           <>
@@ -33,15 +33,18 @@ export default function GeoLocationCapture({ value, onCapture }: GeoLocationCapt
           </>
         ) : (
           <>
-            <span className="text-xl">📍</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
             {value ? 'Recapturar Localização' : 'Capturar Localização GPS'}
           </>
         )}
       </button>
 
       {value && (
-        <div className="px-3 py-2 bg-green-50 rounded-lg border border-green-200">
-          <p className="text-xs font-medium text-green-700">✅ Localização capturada</p>
+        <div className="px-3 py-2.5 bg-green-50 rounded-xl border border-green-200">
+          <p className="text-xs font-semibold text-green-700 flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#16a34a" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            Localização capturada
+          </p>
           <p className="text-xs text-green-600 mt-0.5">
             {value.lat.toFixed(6)}, {value.lng.toFixed(6)}
             {value.accuracy != null && ` · precisão ±${value.accuracy}m`}
