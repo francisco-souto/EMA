@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
-const base = process.env.GITHUB_PAGES === 'true' ? '/onasp-inspecoes/' : '/'
+const base = process.env.GITHUB_PAGES === 'true' ? '/EMA/' : '/'
 
 export default defineConfig({
   base,
